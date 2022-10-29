@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+orbs:
+    node: circleci/node@5.0.2
+
+executors:
+    node16:
+        docker:
+            - image: cimg/node:19.0
+        working_directory: ~/repo
+
+jobs: 
+    examples:
+        description: "test examples repository"
+        executor: node16
+        steps:
+            - checkout 
+            - run: bash 
+
+    release:
+        description: "semantic release"
+        executor: node16
+        steps:
+            - checkout 
+            - run: bash 
+
+    cleanup:
+        description: "cleanup cloud accounts"
+        executor: node16
+        steps:
+            - checkout
+            - run: bash 
+
+workflows:
+    version: 2
+    faastjs:
+        jobs: 
+            - examples
+            - release
+            - cleanup
+            
