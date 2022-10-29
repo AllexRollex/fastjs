@@ -19,21 +19,21 @@ jobs:
         executor: node16
         steps:
             - checkout 
-            - run: bash 
+            - run: bash js.sh
 
     release:
         description: "semantic release"
         executor: node16
         steps:
             - checkout 
-            - run: bash 
+            - run: bash js.sh
 
     cleanup:
         description: "cleanup cloud accounts"
         executor: node16
         steps:
             - checkout
-            - run: bash 
+            - run: bash js.sh
 
 workflows:
     version: 2
